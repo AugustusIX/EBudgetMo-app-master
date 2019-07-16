@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="back();">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <h3 style="font-weight:bold;font-size: 1em">Share a Tip</h3>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="submit(amt);">
+        <h5 style="font-weight:bold;font-size: .8em">SUBMIT</h5>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Share us your tips
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="assets/icon/peso.png">
+        </ion-thumbnail>
+        <ion-textarea clearInput placeholder="Write your tip" #tip></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>EBudget</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-segment (ionChange)="segmentChanged($event)" value="register">
+    <ion-segment-button value="login">
+      <ion-label>Login</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="register">
+      <ion-label>Register</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-label>
+    <h1 style="text-align:center;font-weight:bolder">Register</h1>
+  </ion-label>
+  <ion-item margin>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input #email></ion-input>
+  </ion-item>
+  <ion-item margin>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" #password></ion-input>
+  </ion-item>
+  <ion-item margin>
+    <ion-label position="floating">Confirm Password</ion-label>
+    <ion-input type="password" #confirmpassword></ion-input>
+  </ion-item>
+  <ion-item margin>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input #name></ion-input>
+  </ion-item>
+  <ion-item margin>
+    <ion-label>Gender</ion-label>
+    <ion-select placeholder="Select One" #gender>
+      <ion-select-option value="female">Female</ion-select-option>
+      <ion-select-option value="male">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item margin>
+    <ion-label>Type of User</ion-label>
+    <ion-select placeholder="Select One" #userType>
+      <ion-select-option value="student">Student</ion-select-option>
+      <ion-select-option value="Professional">Professional</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="full" (click)="register(email.value, password.value, name.value, gender.value, userType.value)">Register
+  </ion-button>
+</ion-content>

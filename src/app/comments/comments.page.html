@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button (click)="back();">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Newsfeed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content no-padding #content>
+  <ion-card *ngIf="topSaver" no-margin>
+
+
+    <ion-card-content class="ion-text-center">
+      <ion-img [src]="topSaver.avatar_src" style="width:50%;margin: auto;display: block;"></ion-img>
+    </ion-card-content>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{topSaver.full_name}}
+        <ion-card-subtitle>Top Saver of the week<ion-icon color="danger" name="heart"></ion-icon>
+        </ion-card-subtitle>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-list no-margin no-padding>
+      <div *ngFor="let comment of comments; let i = index;">
+        <ion-item color="primary" lines="none" no-margin>
+          <ion-avatar slot="start">
+            <img [src]="comment.avatar_src">
+          </ion-avatar>
+          <ion-label>
+            {{comment.full_name}}
+            <p text-wrap style="font-size:.8em" class="font-regular">{{comment.comment}}</p>
+          </ion-label>
+
+
+          <ion-note class="font-regular" color="light" style="font-size:.6em" slot="end"
+            *ngIf="user_data && comment.user_id != user_data.id">
+            {{durationLastOnline(comment.timestamp)}} ago
+          </ion-note>
+          <ion-button slot="end" color="light" fill="clear" size="small"
+            *ngIf="user_data && comment.user_id == user_data.id" (click)="showPopover(comment,i, $event);">
+            <ion-note class="font-regular" color="light" style="font-size:.6em" slot="end" *ngIf="user_data">
+              {{durationLastOnline(comment.timestamp)}} ago
+            </ion-note>
+            <ion-icon name="more" slot="end"></ion-icon>
+          </ion-button>
+
+
+        </ion-item>
+      </div>
+
+
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-item color="primary">
+    <ion-input placeholder="Type a comment" #message></ion-input>
+    <ion-button color="light" fill="clear" (click)="sendComment(message.value)">Send</ion-button>
+  </ion-item>
+</ion-footer>

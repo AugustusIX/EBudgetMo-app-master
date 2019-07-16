@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title style="color: #57192e;">
+      Leaderboard
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-card>
+    <img src="assets/img/lb.png" />
+    <ion-card-content>
+      <ion-card-title>
+        Top Saver of the Week!
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card-content>
+    <ion-list *ngFor="let item of leaderboard; let i = index;">
+      <ion-item>
+        <ion-badge slot="start" [ngStyle]="{'background-color': true ? getColor(i):''}">{{i + 1}}</ion-badge>
+        <h2> {{item.full_name}} (Savings:{{convertDecimalPlaces(item.percentage)}}% of
+          {{calculate(item.budget , item.expenses)}})
+        </h2>
+      </ion-item>
+    </ion-list>
+
+  </ion-card-content>
+</ion-content>
