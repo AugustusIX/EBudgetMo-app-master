@@ -1,0 +1,7 @@
+{
+  "name": "ebudget",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
